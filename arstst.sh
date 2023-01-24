@@ -1,0 +1,1 @@
+rsync -av --exclude='node_modules' --exclude='*/dist' --exclude='*/prod' --exclude='*/*/dist' --exclude='*/*/prod' --exclude='*/node_modules' --exclude='*/*/node_modules' --exclude='*/package-lock.json' --exclude='*/*/package-lock.json'  /home/tim/www/react/v18/ /home/tim/www/react/v18/tags/tag1
