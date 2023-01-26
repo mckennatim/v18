@@ -1,0 +1,16 @@
+{
+  "name": "signin",
+  "version": "1.0.0",
+  "description": "signin shared by all iot apps",
+  "main": "webpack.config.js",
+  "scripts": {
+    "help": "../../node_modules/webpack/bin/webpack.js --help=verbose",
+    "dev": "../../node_modules/webpack/bin/webpack.js watch --env appdir=iot/signin --config ../../webpack.config.js",
+    "prod": "../../node_modules/webpack/bin/webpack.js --env appdir=iot/signin --env proddir=prod --config ../../webpack.production.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Timothy S. McKenna <mckenna.tim@gmail.com> (http://mckennatim.github.io/mckennatim/)",
+  "license": "MIT",
+  "devDependencies": {
+  }
+}
