@@ -8,7 +8,9 @@ The v18/iot stack is part of the core v18 stack which is responsive/multipane,  
 ### 2/23/23 15-128demo2-mvp
 Two way communication with device. Able to set relay onof and hi lo
 
-TODDO -setup timer and program to work
+TODO 
+- setup timer and program to work
+- expand initState.js to change the appid
 ### 2/7/23 14-wsclient_req-my_recd_sent
 TODO lint
 
