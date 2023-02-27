@@ -10,7 +10,7 @@ import {
   monitorFocus,
   getDinfo,
 } from "../../../@mckennatim/mqtt-hooks/src";
-import { initialState } from "../initialState";
+import { initialState } from "../appInit";
 // }from '@mckennatim/mqtt-hooks'
 
 const lsh = ls.getItem();
@@ -41,6 +41,11 @@ export default function Control() {
 
   const doOtherShit = (devs, zones, client) => {
     publish(client, "presence", "hello form do other shit");
+    console.log("devs: ",devs);
+    const topic = `${Object.keys(devs)[0]}/req`
+    const payload = `{"id":2, "req":"flags"}`
+    console.log("topic, payload: ",topic,payload);
+    // publish(client, topic, payload)
   };
 
   const topics = ["srstate", "sched", "flags", "timr"];
@@ -84,7 +89,7 @@ export default function Control() {
     publish(client, topic, payload);
   };
 
-  const handleKeyDown = key=> event=>{
+  const handleNewTstat = key=> event=>{
     if (event.key === 'Enter') {
       const val = event.target.value*1
       const di = getDinfo(key, devs);
@@ -94,6 +99,29 @@ export default function Control() {
       const newt = [val+dif, val-dif]
       const topic = `${di.dev}/cmd`;
       const payload = `{"id":${di.sr},"sra":[${newt}]}`;
+      console.log("topic,payload: ", topic, payload);
+      publish(client, topic, payload);
+    }
+  }
+  const handleTsec = key=> event=>{
+    if (event.key === 'Enter') {
+      const val = event.target.value*1
+      const di = getDinfo(key, devs);
+      console.log('di: ', di);
+      const topic = `${di.dev}/cmd`;
+      const payload = `{"id":${di.sr},"sra":[],"tsec":${val}}`;
+      console.log("topic,payload: ", topic, payload);
+      publish(client, topic, payload);
+    }
+  }
+
+  const handleNewProg = key => event =>{
+    if (event.key === 'Enter') {
+      const tarr = event.target.value
+      console.log('key, event.target: ', key, event.target.value);
+      const di = getDinfo(key, devs);
+      const topic = `${di.dev}/prg`;
+      const payload = `{"id":${di.sr},"pro":[${tarr}]}`;
       console.log("topic,payload: ", topic, payload);
       publish(client, topic, payload);
     }
@@ -110,18 +138,23 @@ export default function Control() {
             <span>  
               <span>{di.dev } {di.sr} {key} </span>
               darr:[{state[key].darr[0]} {state[key].darr[1]} {state[key].darr[2]} {state[key].darr[3]}] 
-              {state[key].pro && 
-                <span> pro: {JSON.stringify(state[key].pro)} </span>
-              }
-              {state[key].timeleft >=0 && 
-                <span> timeleft:  {JSON.stringify(state[key].timeleft)}</span>
-              }
+              {(state[key].darr.length == 4) &&
+                <input size="1" type="text" onKeyDown={handleNewTstat(key)}></input>
+              } 
               {(state[key].darr[0]==0 || state[key].darr[0]==1)  &&
                 <button onClick={toggleOnOff(key)}>toggle</button>
               }
-              {(state[key].darr.length == 4) &&
-                <input type="number" onKeyDown={handleKeyDown(key)}></input>
-              } 
+              {state[key].pro && 
+                <span> pro: {JSON.stringify(state[key].pro)} [
+                <input size="20" type="text" onKeyDown={handleNewProg(key)}></input> ]
+                </span>
+              }
+              {state[key].timeleft >=0 && 
+                <span> timeleft:  {JSON.stringify(state[key].timeleft)}
+                <input size="1" type="text" onKeyDown={handleTsec(key)}></input>
+                </span>
+              }
+
             </span>
           </li>)
         }
@@ -129,6 +162,8 @@ export default function Control() {
       return (
         <div>
           <ul>{listData}</ul>
+          [0,0,1],[21,55,0]
+          [0,0,69,67],[13,13,72,70]
           <p>
             Simple page to operate as an mqtt ws client that can send and
             recieve payloads to a test device

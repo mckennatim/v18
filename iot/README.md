@@ -6,6 +6,8 @@ The v18/iot stack is part of the core v18 stack which is responsive/multipane,  
 
 ## wsclient log
 ### 2/27/23 16-128demo2-tmr_prg
+TODO finish cmd to turn on relay for x seconds
+
 now shows up
 
 ### 2/23/23 15-128demo2-mvp

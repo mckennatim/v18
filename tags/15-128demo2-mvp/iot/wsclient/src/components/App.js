@@ -4,6 +4,7 @@ import {ClientSocket} from '../../../@mckennatim/mqtt-hooks/src'
 import {AProvider} from '../contexts/acontext'
 import { NavCtrl } from "./NavCtrl.js";
 import {cfg} from '../utilities/getCfg'
+import {appid} from "../appInit"
 
 console.log(cfg);
 
@@ -16,7 +17,7 @@ export const App=(props)=> {
       <AProvider>
         <Suspense fallback={<div>Loading...</div>}>
           <div>
-            <NavCtrl title={title} appid={cfg.appid}/>
+            <NavCtrl title={title} appid={appid}/>
           </div>
         </Suspense>
       </AProvider>

@@ -103,6 +103,17 @@ export default function Control() {
       publish(client, topic, payload);
     }
   }
+  const handleTsec = key=> event=>{
+    if (event.key === 'Enter') {
+      const val = event.target.value*1
+      const di = getDinfo(key, devs);
+      console.log('di: ', di);
+      const topic = `${di.dev}/cmd`;
+      const payload = `{"id":${di.sr},"sra":[],"tsec":${val}}`;
+      console.log("topic,payload: ", topic, payload);
+      publish(client, topic, payload);
+    }
+  }
 
   const handleNewProg = key => event =>{
     if (event.key === 'Enter') {
@@ -130,17 +141,20 @@ export default function Control() {
               {(state[key].darr.length == 4) &&
                 <input size="1" type="text" onKeyDown={handleNewTstat(key)}></input>
               } 
+              {(state[key].darr[0]==0 || state[key].darr[0]==1)  &&
+                <button onClick={toggleOnOff(key)}>toggle</button>
+              }
               {state[key].pro && 
                 <span> pro: {JSON.stringify(state[key].pro)} [
                 <input size="20" type="text" onKeyDown={handleNewProg(key)}></input> ]
                 </span>
               }
               {state[key].timeleft >=0 && 
-                <span> timeleft:  {JSON.stringify(state[key].timeleft)}</span>
+                <span> timeleft:  {JSON.stringify(state[key].timeleft)}
+                <input size="1" type="text" onKeyDown={handleTsec(key)}></input>
+                </span>
               }
-              {(state[key].darr[0]==0 || state[key].darr[0]==1)  &&
-                <button onClick={toggleOnOff(key)}>toggle</button>
-              }
+
             </span>
           </li>)
         }

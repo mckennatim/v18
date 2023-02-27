@@ -1,5 +1,6 @@
 import env from '../../denv.json'
 import {storageLocal} from './storageLocal'
+import {appid} from "../appInit"
 
 const getTLD = (host) =>{
   const sparr = host.split('.')
@@ -31,9 +32,9 @@ const signupqry = urls.soauth+"/spa/signup?apiURL="+encodeURIComponent(urls.api)
 
 const url = urls
 
-// const cfg={authqry, appid:env.appid, signupqry, url, urls, cbPath:env.cbPath}
+// const cfg={authqry, appid:appid, signupqry, url, urls, cbPath:env.cbPath}
 const cfg={authqry, 
-  appid:env.appid, 
+  appid:appid, 
   mqtt_server:env.mqtt_server, 
   mqtt_port:env.mqtt_port,
   signupqry, 
