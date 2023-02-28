@@ -1,0 +1,16 @@
+{
+  "name": "@mckennatim/ztest0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tim McKenna",
+  "license": "ISC",
+  "private": false,
+  "description": "",
+  "dependencies": {
+    "npm-packlist": "^7.0.4"
+  }
+}
