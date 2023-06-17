@@ -5,8 +5,12 @@ The v18/iot stack is part of the core v18 stack which is responsive/multipane,  
 @mckenna.tim/mqtt-hooks and @mckenna/react-zonetimer are now deprecated. The `/home/tim/www/react/v8/iot@mckennatim/src` is what will be used for the present v18 stack. I retorspect it was kind of crazy to take perfectly fine es6 code and transpile it down to a es5 lib which then gets transpiled again when it is included in the app. So now we just include the es6 source and transpile that with the app.
 
 ## wsclient log
+### 2/28/23 17-tsec_description.md
+
+
 ### 2/27/23 16-128demo2-tmr_prg
-TODO finish cmd to turn on relay for x seconds
+TODO 
+- [x] finish cmd to turn on relay for x seconds
 
 now shows up
 

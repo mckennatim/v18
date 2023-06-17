@@ -37,7 +37,7 @@ export default function Control() {
       nsarr.map((ns) => {
         const key = Object.keys(ns)[0];
         const action = { type: key, payload: ns[key] };
-        console.log('action: ', action);
+        console.log('action: ', action.payload);
         dispatch(action);
       });
     }
@@ -85,6 +85,7 @@ export default function Control() {
     const newt = !state[typ].darr[0] * 1;
     console.log("newt: ", newt);
     console.log("typ: ", typ);
+    
     const di = getDinfo(typ, devs);
     console.log("di: ", di);
     const topic = `${di.dev}/cmd`;
@@ -139,7 +140,7 @@ export default function Control() {
       const arr = event.target.value.split(',').map(a=>a*1)
       
       console.log('arr: ', arr);
-      const tarr = {ctype:"relay",darr: arr}
+      const tarr = {ctype:"relay", darr: arr, timeleft: 0}
       const action = { type: key, payload: tarr };
       dispatch(action);
       console.log('key, event.target: ', key, event.target.value);
@@ -147,7 +148,6 @@ export default function Control() {
       const topic = `${di.dev}/cmd`;
       const payload = `{"id":${di.sr},"sra":[${arr}]}`;
       console.log("topic,payload: ", topic, payload);
-      alert(`dogs are ${topic} ${payload}`)
       publish(client, topic, payload);
     }
   }

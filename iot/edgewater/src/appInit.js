@@ -6,10 +6,10 @@ pond: {pro:[[0,0,0],[19,15,1]], timeleft:0, darr:[0,0,0]},
 //solar: darr:[sra_rdg, srb_rdg, difon, difoff,maxa, maxb onoff]
 */
 const initialState = {//pro must start at 0,0
-  zone1: {ctype: "relay", darr: [0,15,1,-1,-1] },
-  de_zone2: {ctype: "relay", darr: [0,15,2,0,0] , timeleft: 0},
-  de_zone3: {ctype: "relay", darr: [0,15,3,1,0] },
-  de_zone4: {ctype: "relay", darr: [0,15,-1,2,0] },
+  zone1: {ctype: "relay", darr: [0,15,1,-1,-1], timeleft: 0 },
+  de_zone2: {ctype: "relay", darr: [0,15,2,0,0], timeleft: 0},
+  de_zone3: {ctype: "relay", darr: [0,15,3,1,0], timeleft: 0 },
+  de_zone4: {ctype: "relay", darr: [0,15,-1,2,0], timeleft: 0},
   temp_out: {darr: [0]}
 }
 
