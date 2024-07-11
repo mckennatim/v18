@@ -6,7 +6,7 @@ compoi["AddJob"] = React.lazy(() => import("./components/AddJob.js"));
 compoi["Control"] = React.lazy(() => import("./components/Control.js"));
 
 const multi = {
-  default: "control",
+  default: "help",
   jobs: [["Jobs"], ["Jobs", "Help"], ["Jobs", "AddJob", "Help"]],
   addjob: [["AddJob"], ["AddJob", "Jobs"], ["AddJob", "Jobs", "Help"]],
   help: [["Help"]],

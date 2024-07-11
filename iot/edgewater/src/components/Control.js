@@ -144,6 +144,7 @@ export default function Control() {
       const action = { type: key, payload: tarr };
       dispatch(action);
       console.log('key, event.target: ', key, event.target.value);
+      console.log('state[key]: ', state[key]);
       const di = getDinfo(key, devs);
       const topic = `${di.dev}/cmd`;
       const payload = `{"id":${di.sr},"sra":[${arr}]}`;
@@ -158,7 +159,7 @@ export default function Control() {
     const topic = `${di.dev}/cmd`;
     const payload = `{"id":${di.sr},"sra":[${state[key].darr}]}`;
     console.log("topic,payload: ", topic, payload);
-    //publish(client, topic, payload);
+    // publish(client, topic, payload);
   }
 
   const handleRawCmd = event =>{
@@ -194,7 +195,7 @@ export default function Control() {
             return(
             <span>
             <input size="2" type="text" onKeyDown={handleDarrCng(key)}></input>
-            {/* <button onClick={handleDarrBtn(key)}>change</button> */}
+            <button onClick={handleDarrBtn(key)}></button>
             </span>)
 
           }
@@ -212,7 +213,7 @@ export default function Control() {
               }
               {state[key].timeleft >=0 && 
                 <span> timeleft:  {JSON.stringify(state[key].timeleft)}
-                <input size="1" type="text" onKeyDown={handleTsec(key)}></input>
+                {/* <input size="1" type="text" onKeyDown={handleTsec(key)}></input> */}
                 </span>
               }
 
@@ -223,11 +224,11 @@ export default function Control() {
       return (
         <div>
           <ul>{listData}</ul>
-          [0,0,1],[21,55,0]
+          {/* [0,0,1],[21,55,0]
           [0,0,69,67],[13,13,72,70]
           <p>&#123;&quot;id&quot;:3, &quot;sra&quot;:[1, 240]&#125;</p>
           <br/>
-          <input size="80" type="text" onKeyDown={handleRawCmd}></input>
+          <input size="80" type="text" onKeyDown={handleRawCmd}></input> */}
           
           <p>
             Simple page to operate as an mqtt ws client that can send and

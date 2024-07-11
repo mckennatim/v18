@@ -12,12 +12,12 @@ export const NavCtrl=(props)=>{
     <nav style ={styles.nav.nav}>
       <span> {title} {devInfo.dev} {panes} {appid} </span>
       <ul style ={styles.nav.ul}>
-        <li style ={styles.nav.li}>
+        {/* <li style ={styles.nav.li}>
           <a onClick={handlePath('/jobs')}>jobs</a>
         </li>
         <li style ={styles.nav.li}>
           <a onClick={handlePath('/addjob')}>addjob</a>
-        </li>
+        </li> */}
         <li style ={styles.nav.li}>
           <a onClick={handlePath('/help')}>help</a>
         </li>
