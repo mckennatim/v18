@@ -11,7 +11,7 @@ export default function Help(){
     
     <div style ={styles.help.div0}>
       {visiblePages.map((p,i)=>(<div key={i}>{p}</div>))}
-      <h2>Stewards</h2>
+      <h2>Edgewater Stewards</h2>
 
       <h3>Intallation and Startup</h3>
       The Edgewater Water Control (EWC) is powered from the USB on the electric panel. Before rebooting with the Side Button or reconnecting to USB, pull the fuses for the outdoor solenoids. Once the EWC has booted up and is running, you can put in the solenoid fuse. You can tell if the EWC is running by pressing the Top Button and seeing an LED go on in the controller. Press the Top Button again to shut it down then put in the solenoid fuse.
